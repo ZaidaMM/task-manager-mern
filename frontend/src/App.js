@@ -12,14 +12,15 @@ function App() {
   return (
     <Router>
       <Navigation />
-
-      <Routes>
-        <Route exact path='/' element={<Intro />} />
-        <Route path='/list' element={<TasksList />} />
-        <Route path='/edit/:id' element={<AddTask />} />
-        <Route path='/add' element={<AddTask />} />
-        <Route path='/user' element={<AddUser />} />
-      </Routes>
+      <div className='container p-4'>
+        <Routes>
+          <Route exact path='/' element={<Intro />} />
+          <Route path='/list' element={<TasksList />} />
+          <Route path='/edit/:id' element={<AddTask />} />
+          <Route path='/add' element={<AddTask />} />
+          <Route path='/user' element={<AddUser />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

@@ -18,9 +18,9 @@ export default class Navigation extends Component {
             aria-expanded='false'
             aria-label='Toggle navigation'
           >
-            <span class='navbar-toggler-icon'></span>
+            <span className='navbar-toggler-icon'></span>
           </button>
-          <div class='collapse navbar-collapse' id='navbarNav'>
+          <div className='collapse navbar-collapse' id='navbarNav'>
             <ul className='navbar-nav ml-auto'>
               <li className='nav-item active'>
                 <Link className='nav-link' to='/'>

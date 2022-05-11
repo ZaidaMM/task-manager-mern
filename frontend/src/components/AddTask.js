@@ -7,20 +7,32 @@ export default class AddTask extends Component {
     users: [],
     userSelected: '',
     title: '',
-    description: '',
+    content: '',
     date: new Date(),
   };
 
   async componentDidMount() {
     const res = await axios.get('http://localhost:5000/api/users');
     // console.log(res.data);
-    this.setState({ users: res.data.map((user) => user.username) });
+    this.setState({
+      users: res.data.map((user) => user.username),
+      userSelected: res.data[0].username,
+    });
     console.log(this.state.users);
   }
 
-  onSubmit = (e) => {
-    console.log(this.state.title, this.state.description);
+  onSubmit = async (e) => {
     e.preventDefault();
+    // console.log(this.state.title, this.state.content);
+    const newTask = {
+      title: this.state.title,
+      content: this.state.content,
+      date: this.state.date,
+      author: this.state.userSelected,
+    };
+    const res = await axios.post('http://localhost:5000/api/tasks', newTask);
+    console.log(res);
+    window.location.href = '/list';
   };
 
   onInputChange = (e) => {
@@ -48,7 +60,7 @@ export default class AddTask extends Component {
                 className='form-control'
                 onChange={this.onInputChange}
               >
-                <option>Select User</option>
+                {/* <option>Select User</option> */}
                 {this.state.users.map((user) => (
                   <option key={user} value={user}>
                     {user}
@@ -70,8 +82,8 @@ export default class AddTask extends Component {
               <textarea
                 type='text'
                 className='form-control'
-                placeholder='Description'
-                name='description'
+                placeholder='Content'
+                name='content'
                 onChange={this.onInputChange}
                 required
               ></textarea>

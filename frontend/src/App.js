@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-datepicker/dist/react-datepicker.css';
+
 import './App.css';
 import Navigation from './components/Navigation';
 import Intro from './components/Intro';
@@ -14,13 +14,11 @@ function App() {
     <Router>
       <Navigation />
       <div className='container p-4'>
-        <Routes>
-          <Route exact path='/' element={<Intro />} />
-          <Route path='/list' element={<TasksList />} />
-          <Route path='/edit/:id' element={<AddTask />} />
-          <Route path='/add' element={<AddTask />} />
-          <Route path='/user' element={<AddUser />} />
-        </Routes>
+        <Route exact path='/' component={Intro} />
+        <Route path='/list' component={TasksList} />
+        <Route path='/edit/:id' component={AddTask} />
+        <Route path='/add' component={AddTask} />
+        <Route path='/user' component={AddUser} />
       </div>
     </Router>
   );

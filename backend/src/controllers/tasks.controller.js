@@ -31,6 +31,7 @@ tasksCtrl.updateTask = async (req, res) => {
     title,
     content,
     author,
+    date,
   });
   res.json({ message: 'Task Updated' });
 };

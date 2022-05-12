@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+
 const app = express();
 
 // Settings
@@ -12,5 +13,8 @@ app.use(express.json());
 // Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/tasks', require('./routes/tasks'));
+
+// For Deployment
+app.use(express.static('../frontend/build'));
 
 module.exports = app;
